@@ -1,0 +1,64 @@
+body {
+    font-family: "Arial";
+    color: #333333;
+}
+
+.form__fieldwrap {
+    margin-bottom: 40px;
+}
+
+.form__input {
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #4a4a4a;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.5em;
+    border-radius: 0;
+    padding-top: .7em;
+    padding-bottom: .7em;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: inherit;
+    outline: none;
+}
+
+.form__input:focus {
+    outline: 3px solid #000000;
+}
+.form__fieldset_user_data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+}
+.form__fieldset_subject {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.form__fieldset_subject .form__fieldwrap--radio label
+{
+    display: block;
+    padding: 0.75em;
+    width: 150px;
+    color: #ccc;
+    background: black;
+    cursor: pointer;
+}
+/*.form__fieldset_subject .form__fieldwrap--radio input {
+    position: absolute;
+    opacity: 0;
+}*/
+.form__fieldset_subject input[type="radio"]:checked ~ .form__fieldset_subject .form__fieldwrap--radio label {
+    color: black;
+    background: #ccc;
+}
+body {
+    width: 992px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.button--submit {
+    width: 100%;
+    padding: 0.75em;
+}

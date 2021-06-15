@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="preview">
+            <h3 id="text">rgb(0, 0, 0)</h3>
+            <canvas width="500" height="250"></canvas>
+        </div>
+        <div class="sliders">
+            <form action="">
+                <label for="r">
+                    R
+                    <input id="r" type="range" min="0" max="255">
+                </label>
+                <label for="g">
+                    G
+                    <input id="g" type="range" min="0" max="255">
+                </label>
+                <label for="b">
+                    B
+                    <input id="b" type="range" min="0" max="255">
+                </label>
+            </form>
+        </div>
+    </div>
+<script>
+    let r = 0, g = 0, b = 0;
+    window.addEventListener('load', e => {
+        let text = document.getElementsByTagName('h3')[0];
+        let form = document.getElementsByTagName("form")[0];
+        let cvs = document.getElementsByTagName('canvas')[0];
+        let ctx = cvs.getContext('2d');
+        form.addEventListener('change', e => {
+            r = document.getElementById('r').value;
+            g = document.getElementById('g').value;
+            b = document.getElementById('b').value;
+
+            text.innerText = `rgb(${r}, ${g}, ${b})`
+        });
+
+        void draw();
+
+        function draw() {
+
+            ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+            ctx.fillRect(0, 0, cvs.width, cvs.height);
+            requestAnimationFrame(draw);
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C26</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="square">
+
+            </div>
+            <div class="menu">
+                <div class="part-1">
+
+                </div>
+                <input>
+                <br/>
+                <input>
+                <div class="part-2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', e => {
+           let part1 = document.getElementsByClassName('part-1')[0];
+           let part2 = document.getElementsByClassName('part-2')[0];
+            let square = document.getElementsByClassName('square')[0];
+            let input1 = document.getElementsByTagName('input')[0];
+            let input2 = document.getElementsByTagName('input')[1];
+
+            input1.value = '#dd163b';
+            input2.value = '#ff0000';
+
+            input1.addEventListener('change', e => {
+                console.log('change')
+               square.style.background = `linear-gradient(to right, ${input1.value} ${input2.value})`
+            });
+            input2.addEventListener('change', e => {
+                square.style.background = `linear-gradient(to right, ${input1.value} ${input2.value})`
+            });
+
+            for (let i = 0; i < 10; i++)
+           {
+               let btn = document.createElement('button');
+               r = Math.floor(Math.random() * (256)),
+                   g = Math.floor(Math.random() * (256)),
+                   b = Math.floor(Math.random() * (256)),
+                   color = '#' + r.toString(16) + g.toString(16) + b.toString(16);
+               btn.setAttribute('data-id', color);
+               btn.setAttribute('data-value', 1);
+               btn.style.background = color;
+               btn.style.height = '40px';
+               btn.style.width = '40px';
+
+               part1.append(btn);
+           }
+
+            for (let i = 0; i < 10; i++)
+            {
+                let btn = document.createElement('button');
+                r = Math.floor(Math.random() * (256)),
+                    g = Math.floor(Math.random() * (256)),
+                    b = Math.floor(Math.random() * (256)),
+                    color = '#' + r.toString(16) + g.toString(16) + b.toString(16);
+                btn.setAttribute('data-id', color);
+                btn.setAttribute('data-value', 2);
+                btn.style.background = color;
+                btn.style.height = '40px';
+                btn.style.width = '40px';
+
+                part2.append(btn);
+            }
+
+
+            let buttons = document.querySelectorAll('button');
+            buttons.forEach(item => {
+                item.addEventListener('click', e => {
+                    let el = item;
+                    if (el.getAttribute('data-value') == 1) {
+                        input1.value = el.getAttribute('data-id');
+                    } else {
+                        input2.value = el.getAttribute('data-id');
+                    }
+                })
+            });
+
+
+
+        });
+    </script>
+</body>
+</html>

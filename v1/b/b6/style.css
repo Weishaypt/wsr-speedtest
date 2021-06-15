@@ -1,0 +1,31 @@
+/*CSS RESET*/
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+/*PUT YOUR CSS CODE HERE*/
+#block {
+	display: inline-block;
+	position: relative;
+	width: 100px;
+	height: 100px;
+	background: blue;
+	clip-path: polygon(0 0, 0% 100%, 100% 0);
+	margin: 10%;
+	transition: 0.3s ease;
+	animation: triangle_to_square 3s infinite;
+}
+@keyframes triangle_to_square {
+	0% {
+		clip-path: polygon(0 0, 0% 100%, 100% 0);
+	}
+	50% {
+
+	}
+	100% {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+		background: gold;
+	}
+}

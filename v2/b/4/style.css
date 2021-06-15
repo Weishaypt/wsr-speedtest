@@ -1,0 +1,44 @@
+input {
+    margin: 0;
+    padding: 0;
+}
+#switch {
+    display: none;
+}
+.ios-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+    position: relative;
+    border-radius: 50%;
+    padding: 1em;
+}
+.ios-switch-bg {
+    border-radius: 20px;
+    background: #00008b;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    transition: 0.3s ease;
+}
+#activate {
+    background: #00ffff;
+}
+#disable {
+    visibility: hidden;
+    background: #00008b;
+}
+#activate:checked {
+    visibility: hidden;
+}
+#activate:checked ~ .ios-switch-bg {
+    background: #00ffff;
+}
+#activate:checked ~ #disable {
+    visibility: visible;
+}

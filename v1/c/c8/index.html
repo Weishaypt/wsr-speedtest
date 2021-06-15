@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clock</title>
+
+    <style>
+    </style>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <form @submit="form">
+                <div
+                        id="tags"
+                        @click="showSelect = true"
+                >
+                    <button v-for="item in activeList" :style="'background:' + item.color">
+                        {{item.name}}
+                        <span style="color: #ccc" @click="deleteTag(item.uid)">X</span>
+                    </button>
+                    <input >
+                </div>
+                <div v-if="showSelect" class="select">
+                     <ul>
+                         <li v-for="(item, key) in list">
+                             <button @click="selectTag(item, key)" :style="'background:' + item.color">
+                                 {{item.name}}
+                             </button>
+                         </li>
+                     </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+let app = new Vue({
+    el: '.container',
+    data()
+    {
+        return {
+            list: [],
+            activeList: [],
+            showSelect: false
+        }
+    },
+    methods:
+    {
+        getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+        },
+        form(e)
+        {
+            e.preventDefault();
+        },
+        selectTag(item, key)
+        {
+            item.uid = this.getRandomInt(0, 99999999999999);
+            this.activeList.push(Object.assign({}, item));
+        },
+        deleteTag(uid)
+        {
+            this.activeList = this.activeList.filter(item =>  {return  item.uid !== uid})
+        }
+    },
+    mounted()
+    {
+        this.list = JSON.parse(
+        `
+        [
+            {
+                "id": 1,
+                "name": "WorldSkills",
+                "color": "#9966ff"
+            },
+            {
+                "id": 2,
+                "name": "Web-Technologies",
+                "color": "#3366ff"
+            },
+            {
+                "id": 3,
+                "name": "Development",
+                "color": "#dd163b"
+            },
+            {
+                "id": 4,
+                "name": "Design",
+                "color": "#ff00ff"
+            }
+        ]
+        `)
+    }
+});
+</script>
+</body>
+</html>

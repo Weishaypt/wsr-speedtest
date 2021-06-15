@@ -1,0 +1,11 @@
+.container {
+    width: 992px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.race {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 55rem;
+}

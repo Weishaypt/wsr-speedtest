@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Light", sans-serif;
+}
+.navbar {
+    background: antiquewhite;
+    list-style: none;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.navbar ul {
+    list-style: none;
+}
+.navbar li {
+    padding: 0.75em;
+}
+.navbar a {
+    color: black;
+    text-decoration: none;
+}
+.navbar a:hover {
+    color: cornflowerblue;
+}
+.container {
+    width: 992px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+
+.card-latest-course {
+    margin-top: 20px;
+    background: #ccc;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+}
+.card-latest-course .header {
+    background: cornflowerblue;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 0.5em;
+    color: white;
+}
+.card-latest-course .body {
+    padding: 0.75em;
+}
+.card-latest-course .body ul {
+    list-style: none;
+}
+.card-latest-course .body li {
+    padding: 0.75em;
+    border-bottom: 1px solid #ccc;
+    background: antiquewhite;
+}
+.card-latest-course .body a {
+    color: black;
+    text-decoration: none;
+}
+.card-latest-course .body a:hover {
+    color: cornflowerblue;
+}
+
+.gallery {
+    margin-top: 40px;
+}
+.gallery .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    grid-gap: 0.5em;
+}
+.gallery .card img {
+    width: 100%;
+    height: 100%;
+}
+.gallery .card  p {
+    text-align: center;
+}
+.contact, .contact h2 {
+    margin-top: 40px;
+}
+.contact .card {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #ccc;
+}
+.contact .card p, .contact .card form {
+    padding: 0.75em;
+}
+.contact .card form input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    margin-bottom: 20px;
+}
+.contact .card form button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5em;
+}
+
+
+footer {
+    text-align: center;
+    padding: 0.75em;
+    background: #333;
+    color: #fff;
+    margin-top: 40px;
+}

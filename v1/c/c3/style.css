@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+div.hud {
+    position: absolute;
+    margin: 0.75em;
+}
+button.hud {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    border-radius: 0;
+    border: 0;
+}
+button.hud:nth-of-type(1) {
+    background: #FDA543;
+}
+button.hud:nth-of-type(2) {
+    background: #4c6ef5;
+}
+button.hud:nth-of-type(3) {
+    background: #12b886;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SpeedTests</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<style>
+    .urls {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    .urls .col-md-1 {
+        margin: 0.75em;
+        padding: 0.75em;
+    }
+</style>
+<body>
+
+<div id="urls" class="container">
+    <div class="urls">
+        <div class="col-md-1 " v-for="item in 7">
+            <a :href="'a/a'+ item +'/index.html'">A{{item}}</a>
+        </div>
+    </div>
+    <div class="urls">
+        <div class="col-md-1 " v-for="item in 15">
+            <a :href="'b/b'+ item +'/index.html'">B{{item}}</a>
+        </div>
+    </div>
+    <div class="urls">
+        <div class="col-md-1 " v-for="item in 27">
+            <a :href="'c/c'+ item +'/index.html'">С{{item}}</a>
+        </div>
+    </div>
+    <div class="urls">
+        <div class="col-md-1 " v-for="item in 14">
+            <a :href="'d/d'+ item +'/'">D{{item}}</a>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#urls',
+       data()
+       {
+           return {
+               urls: [
+                   {
+                       title: 'A1'
+                   }
+               ]
+           }
+       }
+    });
+</script>
+</body>
+</html>

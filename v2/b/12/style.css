@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+.container {
+    width: 992px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+header {
+    padding: 1em;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+}
+form {
+    text-align: center;
+    display: flex;
+    width: 400px;
+}
+form button {
+    padding: 0.5em 0.75em;
+}
+input {
+    padding: 0.5em 0.75em;
+    border-radius: 22px;
+    border: 1px solid #ccc;
+    width: 80%;
+}
+
+.video-player-with-sidebar {
+    margin-top: 3em;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 5em;
+}
+video {
+    height: 400px;
+    max-width: 100%;
+}
+.desc {
+    color: gray;
+}
+.views {
+    width: 100%;
+    text-align: right;
+}
+.avatar > div {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #4a4a4a;
+}
+.comments {
+    margin-top: 5em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 3em;
+}
+
+.comments > div {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    justify-content: center;
+}
+.text {
+    color: gray;
+}
+
+.sidebar .image {
+    width: 150px;
+    height: 100px;
+    background: #4a4a4a;
+}
+.sidebar ul {
+    list-style: none;
+}
+.sidebar ul li {
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1em;
+}

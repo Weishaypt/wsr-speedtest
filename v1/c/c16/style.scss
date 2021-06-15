@@ -1,0 +1,97 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    font-family: "Roboto Light", sans-serif;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 90vh;
+    background: #181a39;
+}
+.container {
+    width: 992px;
+    margin: 5% auto auto;
+}
+.smiley {
+    position: relative;
+    margin: auto;
+    width: 400px;
+    height: 400px;
+    background: #eed16b;
+    border: 20px solid #daa651;
+    border-radius: 50%;
+    transition: all 0.5s linear;
+}
+.eye-l, .eye-r {
+    position: absolute;
+    top: 35%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #daa651;
+}
+.eye-l {
+    left: 20%;
+}
+.eye-r {
+    right: 20%;
+}
+.roth {
+    position: absolute;
+    bottom: 20%;
+    left: 25%;
+    width: 50%;
+    height: 40px;
+    border-radius: 20px;
+    background: #daa651;
+}
+.s {
+    background: #a9db7a;
+    border: 20px solid #83b459;
+    .eye-l, .eye-r {
+        background: #83b459;
+    }
+    .roth {
+        border-radius: 0 0 50% 50%;
+        background: #83b459;
+    }
+}
+.w {
+    background: #ed9496;
+    border: 20px solid #d85f65;
+    .eye-l, .eye-r {
+        background: #d85f65;
+    }
+    .roth {
+        border-radius: 50% 50% 0 0;
+        background: #d85f65;
+    }
+}
+.buttons {
+    width: 500px;
+    margin: 5% auto auto;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    button {
+        width: 100%;
+        padding: 1em;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .s-btn {
+        background: #a9db7a;
+        border: 5px solid #83b459;
+    }
+    .n-btn {
+        background: #eed16b;
+        border: 5px solid #daa651;
+    }
+    .w-btn {
+        background: #ed9496;
+        border: 5px solid #d85f65;
+    }
+}

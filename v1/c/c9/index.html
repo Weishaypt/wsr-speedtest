@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <form action="">
+            <div class="form-group">
+                <label for="name">Spending name</label>
+                <input id="name">
+                <div class="alert" data-id="name" ></div>
+            </div>
+            <div class="form-group">
+                <label for="cost">Cost</label>
+                <input id="cost">
+                <div class="alert" data-id="cost"></div>
+            </div>
+            <button type="submit">
+                ADD
+            </button>
+        </form>
+
+        <h3 class="text-center">LIST</h3>
+        <ul>
+        </ul>
+    </div>
+    <script>
+        let timer = {};
+        window.addEventListener('load', e => {
+            let form = document.getElementsByTagName('form')[0];
+            form.addEventListener('submit', e => {
+                clearTimeout(timer);
+                e.preventDefault();
+                e.stopPropagation();
+                let name =  document.getElementById('name');
+                let cost = document.getElementById('cost');
+                let list = document.getElementsByTagName('ul')[0];
+                let msgName = document.querySelector('[data-id="name"]');
+                let msgCost = document.querySelector('[data-id="cost"]');
+
+                let isCorrect = true;
+                if(name.value === '') {
+                    isCorrect = false;
+                    msgName.innerText = '* There was an error';
+                }
+                else msgName.innerText = 'Correct';
+                if(cost.value === '') {
+                    msgCost.innerText = '* There was an error';
+                    isCorrect = false;
+                }
+                else msgCost.innerText = 'Correct';
+                timer = setTimeout(() => {
+                    msgName.innerText = '';
+                    msgCost.innerText = '';
+                }, 3000);
+
+                if(isCorrect)
+                {
+                    let li = document.createElement('li');
+                    li.innerText = `${name.value} - ${cost.value}`;
+                    list.append(li);
+                    form.reset();
+                }
+            })
+        });
+
+    </script>
+</body>
+</html>

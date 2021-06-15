@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C26</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        window.addEventListener('load', e => {
+            let cvs =  document.getElementsByTagName('canvas')[0];
+            cvs.width = window.innerWidth;
+            cvs.height = window.innerHeight;
+            let ctx = cvs.getContext('2d');
+
+
+            function refresh() {
+                ctx.clearRect(0,0, cvs.width, cvs.height);
+                for(i=0; i<5; i++) {
+
+                    var x = Math.floor(Math.random() * window.innerHeight);
+                    var y = Math.floor(Math.random() * window.innerWidth);
+                    var radius = Math.floor(Math.random() * 400);
+
+                    var r = Math.floor(Math.random() * 255);
+                    var g = Math.floor(Math.random() * 255);
+                    var b = Math.floor(Math.random() * 255);
+
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius, Math.PI * 2, 0, false);
+                    ctx.fillStyle = "rgba(" + r + "," + g + "," + b + ",1)";
+                    ctx.fill();
+                    ctx.closePath();
+                }
+            }
+
+
+            refresh();
+        })
+    </script>
+</body>
+</html>

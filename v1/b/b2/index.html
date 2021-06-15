@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="header">
+    <div>
+        Site title
+    </div>
+    <div v-for="item in 3" :class="'nav-{{item}}'">
+        Nav{{item}}
+    </div>
+</div>
+<div id="root" class="content">
+    <div class="post-title">Post Title</div>
+    <div class="side-bar">Side Bar</div>
+    <div class="post-meta">Post Meta</div>
+    <div class="main-content">Main Content</div>
+    <div class="ads">Ads</div>
+    <div class="main-content-image">Main Content Image</div>
+    <div class="other-stuffs">Other Stuffs</div>
+    <div class="footer">Footer</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '.header',
+        data()
+        {
+            return {
+                urls: [
+                    {
+                        title: 'A1'
+                    }
+                ]
+            }
+        }
+    });
+</script>
+</body>
+</html>

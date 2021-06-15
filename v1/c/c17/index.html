@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C17</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="result">
+
+    </div>
+
+<script>
+
+    let cropImg = function (selector, img) {
+        this.img = img;
+        this.selector = selector;
+        let x = 5, y = 3;
+        this.offsetX = -(this.img.width / 5);
+        this.offsetY = (this.img.height / 3);
+        for(let i = 0; i < x * y; i++)
+        {
+            if(i <= 5)
+            {
+                this.offsetX += this.img.width / 5;
+                new cropImg.card(this.img.width / 5, this.img.height / 3, this.offsetX, this.offsetY);
+                if(i === 5) {
+                    this.offsetY += this.img.height / 3;
+                    this.offsetX = -(this.img.width / 5);
+                }
+            }
+            if(i > 5 && i <= 10)
+            {
+                this.offsetX += this.img.width / 5;
+                new cropImg.card(this.img.width / 5, this.img.height / 3, this.offsetX, this.offsetY);
+                if(i === 5)  {
+                    this.offsetY += this.img.height / 3;
+                    this.offsetX = -(this.img.width / 5);
+                }
+            }
+
+            if(i > 10 && i <= 15)
+            {
+                this.offsetX += this.img.width / 5;
+                new cropImg.card(this.img.width / 5, this.img.height / 3, this.offsetX, this.offsetY);
+                //if(i === 5) this.offsetY += this.img.height / 3;
+            }
+        }
+    };
+    cropImg.prototype.constructor = cropImg;
+
+    cropImg.card = function (w, h, x, y) {
+        this.el = document.createElement('div');
+        document.querySelector('#result').prepend(this.el);
+        this.el.style.width = w+'px';
+        this.el.style.height = h+'px';
+        this.el.style.background = `url(image.jpg) ${x}px ${y}px`;
+    };
+
+
+    window.addEventListener('load', e => {
+        let imgs =  new Image(1920, 1080);
+        imgs.src = 'image.jpg';
+        imgs.onload = function () {
+            new cropImg('#result', imgs);
+        };
+    });
+</script>
+</body>
+</html>

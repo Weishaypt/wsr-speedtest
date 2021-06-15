@@ -1,0 +1,39 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    font-family: "Roboto Light", sans-serif;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 90vh;
+    background: #fff;
+}
+.container {
+    width: 992px;
+    margin: 5% auto auto;
+}
+.card {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 2fr;
+
+    .square {
+        height: 400px;
+        background: linear-gradient(to right, #dd163b, #ff0000);
+    }
+
+    .menu {
+        padding: 2em;
+        .part-2, .part-1 {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+        }
+    }
+    input {
+        width: 100%;
+        padding: 0.25em 0.75em;
+    }
+}

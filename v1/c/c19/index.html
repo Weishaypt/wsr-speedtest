@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C18</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="chart">
+            <div class="vertical__number">
+                <h5>100</h5>
+                <h5>80</h5>
+                <h5>60</h5>
+                <h5>40</h5>
+                <h5>20</h5>
+                <h5>0</h5>
+            </div>
+            <div class="canvas">
+                <canvas>
+
+                </canvas>
+            </div>
+            <div class="col">1990</div>
+            <div class="col">1995</div>
+            <div class="col">2000</div>
+            <div class="col">2005</div>
+            <div class="col">2010</div>
+            <div class="col">2015</div>
+            <div class="col">2020</div>
+        </div>
+    </div>
+    <script>
+        window.$ = function(selector) {
+            let result = document.querySelectorAll(selector);
+            if(result.length === 1) result = result[0];
+            return result;
+        };
+        window.addEventListener('load', e => {
+           let cvs = document.getElementsByTagName('canvas')[0];
+           cvs.width = $('.canvas').offsetWidth;
+           cvs.height = 400;
+            let ctx = cvs.getContext('2d');
+
+            ctx.
+        });
+    </script>
+</body>
+</html>

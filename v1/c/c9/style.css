@@ -1,0 +1,62 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    font-family: "Roboto Light", sans-serif;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 90vh;
+    background: #181a39;
+}
+.card {
+    width: 300px;
+    margin: 10% auto auto;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    padding: 0.75em;
+}
+.form-group {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.form-group input {
+    width: 100%;
+    height: 40px;
+    padding: 0.25em 0.75em;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+.form-group .alert {
+    color: #ff0000;
+    font-size: 0.7rem;
+}
+.card button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 0.75em;
+    font-size: 1rem;
+    color: #fff;
+    background: #4c6ef5;
+    border-radius: 20px;
+    border: 0;
+}
+.text-center {
+    text-align: center;
+}
+.card h3 {
+    margin-top: 10px;
+}
+.card ul {
+    list-style: none;
+    padding: 0.75em;
+}
+.card li {
+    padding: 0.75em;
+    background: #ffe5e5;
+    border-bottom: 1px solid #ccc;
+}

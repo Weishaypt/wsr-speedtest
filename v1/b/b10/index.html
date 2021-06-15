@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B10</title>
+</head>
+<style>
+    .square {
+        height: 400px;
+        width: 400px;
+        transform: translate(100%, 25%);
+        background: #FDA543;
+    }
+</style>
+<body>
+    <div class="square">
+        <form action="" id="form">
+            <div class="input-group">
+                <label for="border">Border Radius</label>
+                <input id="border">
+            </div>
+            <div class="input-group">
+                <label for="shadow">Box Shadow</label>
+                <input id="shadow">
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    window.addEventListener('load', e => {
+        let form = document.getElementById('form');
+        let border = document.getElementById('border');
+        let shadow = document.getElementById('shadow');
+        let square = document.getElementsByClassName('square')[0];
+        function changeCss()
+        {
+            square.style.borderRadius = border.value + 'px';
+            square.style.boxShadow = shadow.value;
+        }
+        shadow.value = square.style.boxShadow;
+        border.value = square.style.borderRadius;
+
+        form.addEventListener('change', changeCss);
+        form.addEventListener('keyup', changeCss);
+    })
+</script>
+</html>

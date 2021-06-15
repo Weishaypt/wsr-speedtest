@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="canvas">
+            <canvas id="cvs1" width="460px" height="320px">
+
+            </canvas>
+            <canvas id="cvs2" width="460px" height="320px">
+
+            </canvas>
+        </div>
+        <form action="">
+            <label for="image">
+                Image
+                <select name="" id="image" autocomplete="off">
+                    <option value="false" selected>Image</option>
+                    <option value="athena">athena.jpg</option>
+                    <option value="mona">mona-lisa.jpg</option>
+                    <option value="kiss">theKiss.jpg</option>
+                    <option value="young">young-pearl.jpg</option>
+                </select>
+            </label>
+            <label for="filter">
+                Filter
+                <select name="" id="filter" autocomplete="off">
+                    <option value="false" selected>Filter</option>
+                    <option value="dark">darken</option>
+                    <option value="light">lighten</option>
+                </select>
+            </label>
+        </form>
+    </div>
+    <script>
+        let cvs, cvsT, ctx, ctxT, img = {}, imgs = {};
+
+        window.addEventListener('load', e => {
+           cvs = document.getElementById('cvs1');
+           ctx = cvs.getContext('2d');
+           cvsT = document.getElementById('cvs2');
+           ctxT =  cvsT.getContext('2d');
+
+           imgs.athena = new Image(460, 320);
+           imgs.athena.src = 'athena.jpg';
+
+           imgs.mona = new Image(460, 320);
+           imgs.mona.src = 'mona-lisa.jpg';
+           imgs.kiss = new Image(460, 320);
+           imgs.kiss.src = 'theKiss.jpg';
+           imgs.young  = new Image(460, 320);
+           imgs.young.src = 'young-pearl.jpg';
+
+           imgs.athena.onload = () => {
+               void draw();
+               function draw() {
+                    let image = document.getElementById('image').value;
+                    let filter = document.getElementById('filter').value;
+
+                    if(image != 'false')
+                    {
+                        img = imgs[image];
+                        ctx.clearRect(0, 0, cvs.width, cvs.height);
+                        ctx.drawImage(img, 0, 0, cvs.width, cvs.height);
+                        ctxT.clearRect(0, 0, cvsT.width,  cvsT.height);
+                        if(filter != 'false') {
+                            switch (filter) {
+                                case 'dark': {
+                                    ctxT.filter = 'brightness(50%)'
+                                }
+                                break;
+                                case 'light': {
+                                    ctxT.filter = 'brightness(-50%)';
+                                }
+                                break;
+                                default: {
+                                    ctxT.filter = 'none';
+                                }
+                            }
+                            ctxT.drawImage(img, 0, 0, cvsT.width, cvsT.height);
+                        }
+                    }
+                   requestAnimationFrame(draw)
+               }
+           }
+
+        });
+    </script>
+</body>
+</html>

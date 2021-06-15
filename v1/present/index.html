@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Present</title>
+    <link rel="stylesheet" href="!https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        color: white;
+        font-weight: bold;
+    }
+    body {
+        background: #17214b;
+    }
+    canvas {
+        z-index: -1;
+    }
+    .container {
+        width: 992px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .btn-mode {
+        position: absolute;
+        right: 5%;
+        top: 5%;
+        padding: 1em;
+        background: #dd163b;
+        color: white;
+        font-weight: bold;
+        border-radius: 20px;
+        border: 2px dotted;
+    }
+    .content {
+        display: grid;
+        justify-content: center;
+    }
+    .circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #0dc36a;
+        border: 2px solid #fff;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        transform: rotate(45deg);
+        position: relative;
+    }
+    .circle .hover button {
+        color: #000;
+    }
+    .circle .hover {
+        position: absolute;
+        top: -44%;
+        right: -50%;
+        display: none;
+        color: #000 !important;
+        padding: 0.1em;
+        transition: 0s background-color;
+        transition-delay:1s;
+    }
+    .circle .segment {
+        line-height: 100%;
+        font-size: 0;
+        height: 100%;
+    }
+    .circle .segment:nth-of-type(1) {
+        border-right: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+    }
+    .circle .segment:nth-of-type(2) {
+        border-left: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+    }
+    .circle .segment:nth-of-type(3) {
+        border-right: 1px solid #fff;
+        border-top: 1px solid #fff;
+    }
+    .circle .segment:nth-of-type(4) {
+        border-left: 1px solid #fff;
+        border-top: 1px solid #fff;
+    }
+    .circle .segment .active {
+        background: #fff;
+        color: #0dc36a;
+    }
+    .circle .segment .center {
+        vertical-align: middle;
+        line-height: 48px;
+        font-size: medium;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        transform: rotate(-45deg);
+        cursor: pointer;
+    }
+    .content .view {
+        margin: auto;
+        margin-top: 25%;
+        width: 500px;
+        background: #18599f;
+    }
+    .content .view .title {
+        padding: 1em;
+        border: 3px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+    .content .view .body {
+        padding: 1.5em;
+        border: 3px solid #ccc;
+        border-top: 0;
+        border-bottom: 0;
+    }
+    input.title {
+        color: black;
+        width: 100%;
+    }
+    textarea.body {
+        color: black;
+        width: 100%;
+    }
+    .content .view .footer {
+        padding: 0.5em;
+        border: 3px solid #ccc;
+        border-top: 1px solid #ccc;
+    }
+    .footer button {
+        padding: 0.25em;
+        color: #000;
+    }
+</style>
+<body>
+<canvas style="width: 100%; height: 100%; position: absolute;">
+
+</canvas>
+<div id="app">
+    <div class="container">
+        <div v-if="mode == 'editor'">
+            <button class="btn-mode" @click="mode = 'present'">Presentation mode</button>
+            <div class="content" id="draggable">
+                <div
+                        v-for="(item, key) in slides"
+                        :key="key"
+                >
+                    <div class="circle">
+                        <div
+                                v-for="(connect, key_) in slides[key].connects"
+                                class="segment"
+                        >
+                            <div class="center" @click="add(slides[key].id, key_)" v-bind:class="{active : connect !== 0}">
+                                {{key_}}
+                            </div>
+                        </div>
+                        <div class="hover">
+                            <button @click="updateSlide(slides[key].id)">EDIT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-else-if="mode == 'edit'">
+            <button class="btn-mode" @click="mode = 'present'">Presentation mode</button>
+            <button class="btn-mode" @click="mode = 'editor'">Editor mode</button>
+            <div class="content">
+                <div class="view">
+                    <input v-model="slide.title" class="title">
+                    <textarea v-model="slide.desc" class="body">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        <div v-else-if="mode === 'present'">
+            <button class="btn-mode" @click="mode = 'editor'">Editor mode</button>
+            <div class="content">
+                <div class="view">
+                    <div class="title">
+                        {{ slide.title }}
+                    </div>
+                    <div class="body">
+                        {{ slide.desc }}
+                    </div>
+                    <div class="footer">
+                        <button
+                            v-for="(item, key) in slide.connects"
+                            :key="key"
+                            v-if="item === activeSlide || item !== 0"
+                            @click="activeSlide = item"
+                        >
+                            {{ getTitle(item) }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="jquery-2.1.1.js"></script>
+<script src="jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    $(window).on('load', e => {
+        let cvs = $('canvas')[0];
+        cvs.width = window.outerWidth;
+        cvs.height = window.outerHeight;
+        let ctx = cvs.getContext('2d');
+        setInterval(() => {
+            let list = $('#draggable').children();
+            if(list.length > 1)
+            {
+                for(let i = 0; i < list.length; i++)
+                {
+                    $(list[i]).draggable();
+                    if(list[i+1] !== undefined)
+                    {
+                        let pos = $(list[i]).css('inset').split(' ');
+                        let next = $(list[i+1]).css('inset').split(' ');
+                        ctx.beginPath();
+                        ctx.moveTo(pos[0], pos[3]);
+                        ctx.lineTo(next[0], next[3]);
+                        ctx.stroke();
+                    }
+                }
+            }
+            let circles = $('.circle');
+            if(circles.length >= 1)
+            {
+                circles.on('mousemove', function () {
+                    $(this)
+                        .children('.hover')
+                        .css('display', 'block')
+                        .css('rotate', '-45deg');
+                });
+
+                circles.on('mouseout', function () {
+                    setTimeout(() => {
+                        $(this)
+                            .children('.hover')
+                            .css('display', 'none');
+                    }, 3000)
+                })
+            }
+        }, 200)
+    });
+    let app = new Vue({
+        el: '#app',
+        data()
+        {
+            return {
+                mode: 'editor',
+                activeSlide: 1,
+                slides: [
+                    {
+                        id: 1,
+                        connects: [0, 0, 0, 0],
+                        title: 'Slide A',
+                        desc: 'Slide A description'
+                    }
+               ]
+           }
+        },
+        computed: {
+            slide()
+            {
+                return this.getSlide(this.activeSlide);
+            }
+        },
+        methods: {
+            updateSlide(id)
+            {
+                this.activeSlide = id;
+                this.mode = 'edit';
+            },
+            getTitle(id)
+            {
+                return this.getSlide(id).title;
+            },
+            getSlide(id)
+            {
+                let result = {};
+                this.slides.forEach(item => {
+                    if(item.id === id) result = item;
+                });
+                return result;
+            },
+            add(id, key)
+            {
+                let connect =  [0, 0, 0, 0];
+                let time = [Date.now()];
+                let id_ =  time.slice();
+                id_ = id_[0];
+                this.getSlide(id).connects[key] = id_;
+                switch (key) {
+                    case 3: {
+                        connect = [id, 0, 0, 0];
+                    }
+                        break;
+                    case 2: {
+                        connect = [0, id, 0, 0];
+                    }
+                        break;
+                    case 1: {
+                        connect = [0, 0, id, 0];
+                    }
+                        break;
+                    case 0: {
+                        connect = [0, 0, 0, id];
+                    }
+                        break;
+                }
+                this.slides.push(
+                    {
+                        id: id_,
+                        connects: connect,
+                        title: `Slide ${id+1}`,
+                        desc: 'Slide description'
+                    }
+                )
+            }
+        }
+    });
+</script>
+</body>
+</html>

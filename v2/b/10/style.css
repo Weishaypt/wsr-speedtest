@@ -1,0 +1,15 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rectangle {
+    width: 400px;
+    height: 400px;
+    background: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

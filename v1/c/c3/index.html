@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="hud">
+    <div>
+        <button onclick="ctx.strokeStyle = '#FDA543'"></button>
+    </div>
+    <div>
+        <button onclick="ctx.strokeStyle = '#4c6ef5'"></button>
+    </div>
+    <div>
+        <button onclick="ctx.strokeStyle = '#12b886'"></button>
+    </div>
+</div>
+<canvas>
+
+</canvas>
+<script>
+    let ctx = {};
+    window.addEventListener('load', e => {
+        let cvs = document.getElementsByTagName('canvas')[0];
+        cvs.width = window.innerWidth;
+        cvs.height = window.innerHeight;
+        let mIsDown = false;
+        let mouse = { x: 0, y: 0};
+        ctx = cvs.getContext('2d');
+        ctx.strokeStyle = '#000';
+        //draw();
+
+        function draw() {
+            ctx.fillStyle = '#333';
+            ctx.fillRect(0, 0, cvs.width, cvs.height);
+            requestAnimationFrame(draw)
+        }
+        cvs.addEventListener("mousemove", function (e) {
+
+            if(mIsDown === true){
+
+                mouse.x = e.pageX - this.offsetLeft;
+                mouse.y = e.pageY - this.offsetTop;
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
+            }
+        });
+
+        window.addEventListener('mouseup', function(e) {
+            if(e.target === cvs && mIsDown) {
+                mouse.x = e.pageX - this.offsetLeft;
+                mouse.y = e.pageY - this.offsetTop;
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
+                ctx.closePath();
+                mIsDown = false;
+            }
+        });
+        window.addEventListener('mousedown', function(e) {
+           if(e.target === cvs && e.buttons === 1)
+           {
+               mIsDown = true;
+               mouse.x = e.pageX - this.offsetLeft;
+               mouse.y = e.pageY - this.offsetTop;
+               ctx.beginPath();
+               ctx.moveTo(mouse.x, mouse.y);
+           }
+        });
+
+
+    });
+</script>
+</body>
+</html>

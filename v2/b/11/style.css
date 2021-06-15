@@ -1,0 +1,76 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.racetrack {
+    user-select: none;
+    font-size: 400px;
+    line-height: 270px;
+    position: relative;
+}
+.car {
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    animation: forwards move 5s linear;
+}
+
+@keyframes move {
+    from {
+        top: 0;
+        left: 50%;
+    }
+    10% {
+        top: 8%;
+        left: 70%;
+    }
+    20% {
+        top: 30%;
+        left: 71%;
+    }
+    30% {
+        top: 44%;
+        left: 50%;
+    }
+
+    40% {
+        top: 73%;
+        left: 14%;
+    }
+
+    50% {
+        top: 90%;
+        left: 25%;
+    }
+    60% {
+        top: 98%;
+        left: 50%;
+    }
+    70% {
+        top: 87%;
+        left: 77%;
+    }
+
+    80% {
+        top: 68%;
+        left: 75%;
+    }
+
+    90% {
+        top: 19%;
+        left: 16%;
+    }
+
+    95% {
+        top: 9%;
+        left: 23%;
+    }
+
+}

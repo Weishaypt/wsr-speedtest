@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas width="400" height="320">
+
+    </canvas>
+    <script>
+        let cvs, ctx;
+        window.addEventListener('load', e => {
+            cvs = document.getElementsByTagName('canvas')[0];
+            ctx = cvs.getContext('2d');
+            let x = 25;
+            draw();
+            function draw() {
+                ctx.clearRect(0, 0, cvs.width, cvs.height);
+                ctx.fillStyle = '#52af8d';
+                ctx.fillRect(0, 0, cvs.width, cvs.height);
+                ctx.beginPath();
+                ctx.arc(x, cvs.height / 2, 25, 0, 2*Math.PI, false);
+                ctx.fillStyle = 'white';
+                ctx.fill();
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = 'white';
+                ctx.stroke();
+                x+= 0.2;
+                requestAnimationFrame(draw);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C16</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="smiley">
+            <div class="eye-l"></div>
+            <div class="eye-r"></div>
+            <div class="roth"></div>
+        </div>
+        <div class="buttons">
+            <button class="s-btn">:)</button>
+            <button class="n-btn">:|</button>
+            <button class="w-btn">:(</button>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', e => {
+            let smiley = document.getElementsByClassName('smiley')[0];
+            let s = document.getElementsByClassName('s-btn')[0];
+            let n = document.getElementsByClassName('n-btn')[0];
+            let w = document.getElementsByClassName('w-btn')[0];
+
+            s.addEventListener('click', e => {
+                smiley.classList.remove('w');
+                smiley.classList.add('s');
+            });
+
+            n.addEventListener('click', e => {
+                smiley.classList.remove('w');
+                smiley.classList.remove('s');
+            });
+
+            w.addEventListener('click', e => {
+                smiley.classList.remove('s');
+                smiley.classList.add('w');
+            });
+        });
+    </script>
+</body>
+</html>
