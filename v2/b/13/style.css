@@ -1,0 +1,20 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.gradient {
+    min-height: 100vh;
+    background: linear-gradient(darkgreen, green, lawngreen, greenyellow, darkgreen);
+    background-position: 0 0;
+    animation: move 3s ease infinite alternate;
+    border-radius: 30px;
+}
+
+@keyframes move {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 992px;
+    }
+}
