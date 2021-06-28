@@ -1,0 +1,18 @@
+* {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+.container {
+    width: 400px;
+    height: 400px;
+    background: #12b886;
+}
+
+.canvas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 400px;
+    grid-gap: 20px;
+}

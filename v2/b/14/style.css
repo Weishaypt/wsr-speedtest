@@ -20,12 +20,12 @@ body {
     padding: 0.35em;
     position: relative;
 }
-.title-border {
+.title-border, .card-border {
     position: absolute;
     border: 2px solid #000;
-    top: -2px;
+    top: -4px;
     bottom: 2px;
-    left: -2px;
+    left: -4px;
     right: 2px;
 }
 .title-wrapper {
@@ -34,6 +34,25 @@ body {
     justify-content: center;
 }
 .grid-row {
+    margin-top: 3em;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+.card {
+    position: relative;
+    background: #fff;
+    padding: 1em;
+}
+.card-title {
+    font-weight: bold;
+    margin-bottom: 0.25em;
+    font-size: 1.5em;
+}
+.card-body {
+    margin-bottom: 1em;
+}
+.card-read-more a {
+    text-decoration: none;
+    color: #007bff;
 }

@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.preloader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #193B48;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader > div {
+    width: 10px;
+    height: 60px;
+    background: lightskyblue;
+}
+.loader > div:nth-of-type(1) {
+    animation: anim linear 1.5s infinite;
+}
+.loader > div:nth-of-type(2) {
+    animation: anim linear 1.5s infinite;
+    animation-delay: 0.5s;
+}
+.loader > div:nth-of-type(3) {
+    animation: anim linear 1.5s infinite;
+    animation-delay: 1s;
+}
+.loader > div:nth-of-type(4) {
+    animation: anim linear 1.5s infinite;
+    animation-delay: 1.5s;
+}
+
+@keyframes anim {
+    from {
+        height: 60px;
+    }
+    80% {
+        height: 120px;
+    }
+    to {
+        height: 60px;
+    }
+}
