@@ -1,0 +1,83 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.smile {
+    margin-top: 10em;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.smile .eyes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+.smile .eyes > div {
+    background: #92c665;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+.smile .emote {
+    margin-top: 60px;
+    background: #92c665;
+    width: 80%;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.smile.s {
+    background: #a9db7a;
+    border: 30px solid #92c665;
+}
+.smile.s  .emote {
+    border-radius: 0 0 50% 50%;
+}
+
+.smile.w {
+    background: #eed16b;
+    border: 30px solid #e1ad51;
+}
+.smile.w  .emote {
+    background: #e1ad51;
+    border-radius: 10px;
+}
+.smile.w .eyes > div {
+    background: #e1ad51;
+}
+
+.smile.e {
+    background: #f09293;
+    border: 30px solid #d86165;
+}
+.smile.e  .emote {
+    background: #d86165;
+    border-radius: 50% 50% 0 0;
+}
+.smile.e .eyes > div {
+    background: #d86165;
+}
+
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    width: 400px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.buttons button {
+    padding: 1em;
+}

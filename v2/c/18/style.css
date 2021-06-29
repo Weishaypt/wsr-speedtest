@@ -1,0 +1,17 @@
+path {
+    stroke: black !important;
+    stroke-width: 2;
+    fill: transparent;
+    stroke-dasharray: 1100;
+    stroke-dashoffset: 1100;
+    animation: dash forwards 3s linear;
+}
+@keyframes dash {
+    80% {
+        stroke-dashoffset: 0;
+        fill: transparent;
+    }
+    to {
+        fill: black;
+    }
+}

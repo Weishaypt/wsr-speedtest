@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="smile s">
+        <div class="eyes">
+            <div></div>
+            <div></div>
+        </div>
+        <div class="emote">
+        </div>
+    </div>
+    <div class="buttons">
+        <button data-id="s">:)</button>
+        <button data-id="w">:|</button>
+        <button data-id="e">:(</button>
+    </div>
+
+<script>
+    window.addEventListener('load', function () {
+        document
+            .querySelector('.buttons')
+            .addEventListener('click', function (e) {
+                console.log(e)
+                let t = e.target;
+                let key = t.attributes.getNamedItem('data-id').value;
+                let oldKey = document.querySelector('.smile').classList.item(1);
+                console.log(oldKey, key)
+                document.querySelector('.smile').classList.replace(oldKey, key)
+            })
+    })
+</script>
+</body>
+</html>
