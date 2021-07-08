@@ -17,7 +17,18 @@ $white = imagecolorallocate($image, 255, 255, 255);
 imagefilledrectangle($image, 0, 0, 400, 200, $red);
 $font_file = 'E:\xampp3\htdocs\wsr-speedtest\v2\d\4\Roboto.ttf';
 
-imagefttext($image, 30, 0, 150, 50, $white, $font_file, "test");
+$str_arr = str_split($str);
+$x = 20;
+$y = 20;
+$angle = 0;
+$size = 30;
+foreach ($str_arr as $item)  {
+    $size = random_int(25, 35);
+    $y += $size / 2 + 1;
+    $x += $size / 2 + 20;
+    $angle = random_int(-30, 30);
+    imagefttext($image, $size, $angle, $x, $y, $white, $font_file, $item);
+}
 header('Content-type: image/png');
 imagepng($image);
 imagedestroy($image);
